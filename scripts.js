@@ -146,7 +146,7 @@ async function processOnePair(pair, workerId) {
   if (!running || win.closed) return;
   try { win.location.href = destUrl; } catch {}
 
-  const wait2 = randInt(80, 140);
+  const wait2 = randInt(80, 100);
   log(`#${workerId} 已跳轉，等待 ${wait2}s 後關閉`);
   await sleep(wait2 * 1000);
 
@@ -180,7 +180,7 @@ async function workerLoop(workerId) {
     await processOnePair(pair, workerId);
     if (!running) break;
 
-    const cooldown = randInt(60, 80);
+    const cooldown = randInt(100, 120);
     log(`#${workerId} 冷卻 ${cooldown}s 後挑下一列`);
     await sleep(cooldown * 1000);
   }
